@@ -1,5 +1,11 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Platform,
+  KeyboardAvoidingView
+} from "react-native";
 import { GiftedChat } from "react-native-gifted-chat";
 import { DirectLine } from "botframework-directlinejs";
 import env from "./env";
@@ -60,6 +66,12 @@ export default class App extends React.Component {
           messages={this.state.messages}
           onSend={this.onSend}
         />
+        {Platform.OS !== "ios" && (
+          <KeyboardAvoidingView
+            behavior="padding"
+            keyboardVerticalOffset={80}
+          />
+        )}
       </View>
     );
   }
